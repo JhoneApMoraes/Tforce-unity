@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
@@ -13,6 +14,8 @@ public class GameController : MonoBehaviour
     public Text scoreText;
     public float ScorePerSecond;
     public static GameController current;
+    public GameObject gameOverPanel;
+    public Button RestartBt;
 
     void Start()
     {
@@ -35,5 +38,10 @@ public class GameController : MonoBehaviour
     public void AddScore(int value){
         CoinScore += value;
         coinText.text = CoinScore.ToString("00000");
+    }
+
+    public void RestartGame()
+    {
+        SceneManager.LoadScene(0);
     }
 }
