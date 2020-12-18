@@ -25,6 +25,10 @@ public class PlatformGeneration : MonoBehaviour
 
     void Update()
     {
+        if (GameController.current.PlayerIsAlive)
+        {
+            
+        
         //logica para gerar plataformas 
         if (transform.position.x < point.position.x)
         {
@@ -33,6 +37,7 @@ public class PlatformGeneration : MonoBehaviour
 
             transform.position = new Vector3(transform.position.x + plataforWidth + Distance, transform.position.y, 0);
             Instantiate(Platform, transform.position, transform.rotation);
+        }
         }
     }
 }

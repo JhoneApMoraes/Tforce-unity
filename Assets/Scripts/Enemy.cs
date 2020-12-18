@@ -24,6 +24,10 @@ public class Enemy : MonoBehaviour
 
     void Update()
     {
+        if (GameController.current.PlayerIsAlive)
+        {
+            
+        
         //transform.Translate(Vector3.left * speed * Time.deltaTime);
 
         rig.velocity = new Vector2(-speed, rig.velocity.y);
@@ -32,12 +36,15 @@ public class Enemy : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        }
     }
 
     //Metodo verificar colisão d bala no inimigo
     void OnTriggerEnter2D(Collider2D collision) {
         if (collision.gameObject.tag == "bullet")
         {
+            GetComponent<CircleCollider2D>().enabled = false; 
+            GameController.current.AddScore(10);
             animator.SetTrigger("Destroy");
             Destroy(gameObject, 1f);
         }
